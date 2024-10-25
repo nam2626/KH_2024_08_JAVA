@@ -14,7 +14,12 @@ public class DBManager {
     private OracleDataSource ods;
     //private 생성자
     private DBManager() {
-        ods.setURL("jdbc:oracle:thin:C##SCOTT/TIGER@localhost:1521:xe");
+        try {
+            ods = new OracleDataSource();
+            ods.setURL("jdbc:oracle:thin:C##SCOTT/TIGER@localhost:1521:xe");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     //Connection 하나 생성해서 리턴
