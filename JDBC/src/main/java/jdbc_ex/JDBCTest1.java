@@ -21,7 +21,9 @@ public class JDBCTest1 {
                 ResultSet rs = stmt.executeQuery(sql);
             //6. 결과를 받아서 출력
                 while(rs.next()){
-                    System.out.println(rs.getString(2));
+                    System.out.println(
+                            rs.getString("PID") + "/"
+                                    + rs.getString(2));
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
