@@ -1,7 +1,6 @@
 package jdbc_ex;
 
 import config.DBManager;
-import oracle.jdbc.pool.OracleDataSource;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
