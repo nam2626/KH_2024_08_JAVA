@@ -1,9 +1,6 @@
 package jdbc_ex;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 public class JDBCTest3 {
@@ -23,11 +20,15 @@ public class JDBCTest3 {
                 "jdbc:oracle:thin:@localhost:1521:xe",
                 "C##SCOTT", "TIGER")) {
             //String sql = "insert into person values('"+pid+"', '"+pname+"', "+age+")";
-            String sql = String.format("insert into person values('%s','%s',%d)",
-                                                                    pid, pname, age);
-            Statement stmt = conn.createStatement();
-            int result = stmt.executeUpdate(sql);
-            System.out.println("몇건 적용" + result);
+            //String sql = String.format("insert into person values('%s','%s',%d)",pid, pname, age);
+            String sql = "insert into person values(?, ?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, pid);
+            pstmt.setString(2, pname);
+            pstmt.setInt(3, age);
+
+            int result = pstmt.executeUpdate();
+            System.out.println("몇건 적용 : " + result);
         } catch (SQLException e) {
             e.printStackTrace();
         }
