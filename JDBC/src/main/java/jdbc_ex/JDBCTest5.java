@@ -9,10 +9,10 @@ public class JDBCTest5 {
 
         try {
             OracleDataSource ods = new OracleDataSource();
-            ods.setURL("jdbc:oracle:thin:@localhost:1521:xe");
-            ods.setUser("C##SCOTT");
-            ods.setPassword("TIGER");
-
+//            ods.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+//            ods.setUser("C##SCOTT");
+//            ods.setPassword("TIGER");
+            ods.setURL("jdbc:oracle:thin:C##SCOTT/TIGER@localhost:1521:xe");
             try(Connection conn = ods.getConnection()) {
                 String sql = "SELECT * FROM PERSON";
                 Statement stmt = conn.createStatement();
