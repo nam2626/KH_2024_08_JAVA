@@ -13,13 +13,13 @@ public class JDBCTest1 {
                     "jdbc:oracle:thin:@localhost:1521:xe",
                     "C##SCOTT", "TIGER")) {
                 System.out.println("데이터베이스 접속 완료");
-                //3. SQL문 작성
+            //3. SQL문 작성
                 String sql = "SELECT * FROM PERSON";
-                //4. SQL문 실행 - Statement 객체 생성
+            //4. SQL문 실행 - Statement 객체 생성
                 Statement stmt = conn.createStatement();
-                //5. SQL문 실행 - SQL문 실행 및 결과 얻기 - Statement 사용
+            //5. SQL문 실행 - SQL문 실행 및 결과 얻기 - Statement 사용
                 ResultSet rs = stmt.executeQuery(sql);
-                //6. 결과를 받아서 출력
+            //6. 결과를 받아서 출력
                 while(rs.next()){
                     System.out.println(
                             rs.getString("PID") + "/"
@@ -32,6 +32,7 @@ public class JDBCTest1 {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
 
     }
 }
